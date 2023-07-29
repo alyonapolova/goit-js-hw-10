@@ -1,0 +1,25 @@
+img {
+  display: block;
+  /* max-width: 100%; */
+  width: 360px;
+  height: auto;
+  margin: 15px 15px;
+}
+
+.cat-info {
+  padding: 10px 10px;
+  justify-content: center;
+  align-items: center;
+  width: 800px;
+  height: auto;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  gap: 20px;
+  /* border: 2px solid black; */
+}
+
+.img_info {
+  gap: 20px;
+  text-align: center;
+}
