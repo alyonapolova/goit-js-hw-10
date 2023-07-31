@@ -1,7 +1,5 @@
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { fetchBreeds, fetchCatByBreed } from './cat-api.js';
-import SlimSelect from 'slim-select';
-import 'slim-select/dist/slimselect.css';
 
 const loader = document.querySelector('.loader');
 const breedSelect = document.querySelector('.breed-select');
@@ -44,17 +42,15 @@ function showError() {
 fetchBreeds()
   .then(breeds => {
     loader.style.display = 'none';
+    breedSelect.style.display = 'block';
 
-    const selectData = breeds.map(breed => ({
-      value: breed.id,
-      text: breed.name,
-    }));
-    console.log('Select data:', selectData);
-    const slimSelect = new SlimSelect({
-      select: breedSelect,
-      onChange: chooseCat,
+    breeds.forEach(breed => {
+      const option = document.createElement('option');
+      option.value = breed.id;
+      option.textContent = breed.name;
+      breedSelect.appendChild(option);
+      //console.log('breed:', breed);
     });
-    slimSelect.setData(selectData);
   })
   .catch(error => {
     loader.style.display = 'none';
