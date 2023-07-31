@@ -36,7 +36,7 @@ function showCatInfo(catData) {
 function showError() {
   const errorMessage = errorElement.textContent;
   Notify.failure(errorMessage);
-
+  catInfo.style.display = 'none';
   //errorElement.style.display = 'block';
 }
 
@@ -52,7 +52,6 @@ fetchBreeds()
     console.log('Select data:', selectData);
     const slimSelect = new SlimSelect({
       select: breedSelect,
-      onChange: chooseCat,
     });
     slimSelect.setData(selectData);
   })
@@ -66,7 +65,10 @@ fetchBreeds()
 breedSelect.addEventListener('change', chooseCat);
 
 function chooseCat() {
+  catInfo.style.display = 'none';
+
   const selectedBreedId = breedSelect.value;
+
   //console.log(selectedBreedId);
   loader.style.display = 'block';
   catInfo.style.display = 'none';
